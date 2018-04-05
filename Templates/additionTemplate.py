@@ -9,7 +9,7 @@ class AdditionTemplate(Template):
 		self.preamble("Addition Worksheet")
 		self.add_title()
 		firstCollection = ProblemCollection('Integer Addition')
-		firstCollection.instructions = "Find the following sums."
+		firstCollection.set_instructions("Find the following sums.")
 		for x in range(10):
 			newProblem = IntegerAdditionProblem()
 			newProblem.new_data()
@@ -18,7 +18,7 @@ class AdditionTemplate(Template):
 		self.collections.append(firstCollection)
 
 		secondCollection = ProblemCollection('Longer Series')
-		secondCollection.instructions = "Find the following sums."
+		secondCollection.set_instructions("Find the following sums.")
 		for x in range(10):
 			newProblem = IntegerAdditionProblem()
 			newProblem.new_data(quantity=6)
@@ -27,7 +27,7 @@ class AdditionTemplate(Template):
 		self.collections.append(secondCollection)
 
 		thirdCollection = ProblemCollection('Larger Sums')
-		thirdCollection.instructions = "Find the following sums."
+		thirdCollection.set_instructions("Find the following sums.")
 		for x in range(10):
 			newProblem = IntegerAdditionProblem()
 			newProblem.new_data(min=100,max=10000)

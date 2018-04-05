@@ -15,7 +15,7 @@ class BabylonianSquareRootsTemplate(Template):
 		# put in some easy small square roots
 
 		easyCollection = ProblemCollection('Basic Babylonian Square Roots')
-		easyCollection.instructions = 'Use the given approximations to generate some more accurate fractions for the given roots.'
+		easyCollection.set_instructions('Use the given approximations to generate some more accurate fractions for the given roots.')
 		for x in range(10):
 			newProblem = BabylonianSquareRootsProblem()
 			newProblem.new_data()
