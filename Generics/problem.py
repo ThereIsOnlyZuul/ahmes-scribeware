@@ -1,10 +1,10 @@
 from Oracle.oracle import Oracle
-from Generics.numberFormatter import NumberFormatter
+from Generics.formatter import Formatter
 
 class Problem:
 
 	oracle = Oracle()
-	formatter = NumberFormatter()
+	formatter = Formatter()
 
 	def __init__(self):
 		self.question

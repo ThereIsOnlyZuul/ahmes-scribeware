@@ -2,6 +2,7 @@ from Addition.additionProblem import IntegerAdditionProblem
 from Generics.template import Template, ProblemPart
 from Generics.problemCollection import ProblemCollection
 from BabylonianSquareRoots.babylonianSquareRoots import BabylonianSquareRootsProblem
+from Oracle.oracle import NumberType
 
 class BabylonianSquareRootsTemplate(Template):
 
@@ -23,4 +24,13 @@ class BabylonianSquareRootsTemplate(Template):
 			easyCollection.add_problem(newProblem)
 		self.add_collection(easyCollection)
 
+		decimalCollection = ProblemCollection('Decimal Babylonian Square Roots')
+		decimalCollection.set_instructions('Use the given approximations to generate more accurate decimals for the given roots.')
+		for x in range(10):
+			newProblem = BabylonianSquareRootsProblem()
+			newProblem.new_data(number_type=NumberType.REAL,precision=1)
+			newProblem.evaluate()
+			decimalCollection.add_problem(newProblem)
+		self.add_collection(decimalCollection)
+	
 

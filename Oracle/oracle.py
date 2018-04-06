@@ -38,7 +38,9 @@ class Oracle(Random):
 
 	def is_square(self,number):
 		'''Determine if the number is a perfect square'''
-		if number < 4:
+		if number == 1:
+			return True
+		elif number < 4:
 			return False
 		x = number // 2
 		seen = set([x])
