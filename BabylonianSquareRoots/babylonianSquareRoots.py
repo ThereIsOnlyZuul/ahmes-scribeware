@@ -1,49 +1,35 @@
+from pylatex import Math
+from pylatex.utils import NoEscape
 import sympy
-
-from fractions import Fraction
 
 from Generics.problem import ProblemToFind
 from Generics.problemCollection import ProblemCollection
-from Oracle.oracle import Oracle
-
-# setup
-
-def is_square(number):
-	if number < 0:
-		return False
-	x = number // 2
-	seen = set([x])
-	while x * x != number:
-		x = (x + (number // x)) // 2
-		if x in seen:
-			return False
-		seen.add(x)
-	return True
+from Oracle.oracle import NumberType
 
 class BabylonianSquareRootsProblem(ProblemToFind):
 
 	def __init__(self):
 		super().__init__()
 
-	def new_data(self,min_radicand=1,max_radicand=100,denominator_limit=10):
+	def new_data(self,number_type=NumberType.RATIONAL,
+			min_radicand=1, max_radicand=100, precision=10):
 		radicand = self.oracle.randint(min_radicand,max_radicand)
-		while is_square(radicand) :
+		while self.oracle.is_square(radicand) :
 			radicand = self.oracle.randint(min_radicand,max_radicand)
-		guess = Fraction(radicand ** 0.5).limit_denominator(denominator_limit)
+		guess = self.oracle.square_root_guess(radicand,number_type,precision)
 		self.data = {'radicand': radicand, 'guess': guess}
 
 	def evaluate(self):
 		self.unknown = []
+		guess = self.data['guess']
 		for x in range(3):
-			self.data['guess'] = (self.data['guess'] + self.data['radicand']*self.data['guess'])/ 2
-			self.unknown.append(self.data['guess'])
+			guess = self.oracle.babylonian_root(self.data['radicand'],guess)
+			self.unknown.append(guess)
 
 	def question(self):
-		sqrt = sympy.sqrt(self.data['radicand'])
-		frac = sympy.Rational(self.data['guess'].numerator,self.data['guess'].denominator)
-		return sympy.latex(sqrt) + ' \approx ' + sympy.latex(frac)
+		root = self.formatter.sqrt(self.data['radicand'])
+		result = r"{} \approx {}".format(sympy.latex(root),sympy.latex(self.data['guess']))
+		return Math(data=[NoEscape(result)])
 
 	def answer(self):
-		response = sympy(latex(self.unknown[0].numerator,self.unknown[0].denominator)
-		for x in unknown[1:]:
-			response +=
+		return Math(data=[NoEscape(sympy.latex(x)) for x in self.unknown])
