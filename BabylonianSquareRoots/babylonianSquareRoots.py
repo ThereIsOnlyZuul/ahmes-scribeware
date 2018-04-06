@@ -32,4 +32,4 @@ class BabylonianSquareRootsProblem(ProblemToFind):
 		return Math(data=[NoEscape(result)])
 
 	def answer(self):
-		return Math(data=[NoEscape(sympy.latex(x)) for x in self.unknown])
+		return Math(data=self.formatter.seperate_list_items([NoEscape(sympy.latex(x)) for x in self.unknown],','))
