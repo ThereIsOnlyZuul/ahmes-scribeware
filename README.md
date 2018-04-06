@@ -45,7 +45,7 @@ The [Code of Conduct](CONDUCT.md) applies to contributions.
 
 I welcome pull requests, forks, etc. I am a relative newbie to Git. If you
 have more exprerience and want to contribute, feel free to contat 
-[me](schilke.60@gmail.com).
+[me](mailto:schilke.60@gmail.com).
 
 ## ToDo
 
