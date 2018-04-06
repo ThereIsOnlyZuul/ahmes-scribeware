@@ -1,7 +1,6 @@
-from Addition.additionProblem import IntegerAdditionProblem
+from BabylonianSquareRoots.babylonianSquareRoots import BabylonianSquareRootsProblem
 from Generics.template import Template, ProblemPart
 from Generics.problemCollection import ProblemCollection
-from BabylonianSquareRoots.babylonianSquareRoots import BabylonianSquareRootsProblem
 from Oracle.oracle import NumberType
 
 class BabylonianSquareRootsTemplate(Template):
