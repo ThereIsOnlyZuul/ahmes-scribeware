@@ -21,15 +21,17 @@ class BabylonianSquareRootsTemplate(Template):
 			newProblem.new_data()
 			newProblem.evaluate()
 			easyCollection.add_problem(newProblem)
+		easyCollection.columns(2)
 		self.add_collection(easyCollection)
 
 		decimalCollection = ProblemCollection('Decimal Babylonian Square Roots')
 		decimalCollection.set_instructions('Use the given approximations to generate more accurate decimals for the given roots.')
-		for x in range(10):
+		for x in range(6):
 			newProblem = BabylonianSquareRootsProblem()
 			newProblem.new_data(number_type=NumberType.REAL,precision=1)
 			newProblem.evaluate()
 			decimalCollection.add_problem(newProblem)
+		decimalCollection.columns(2)
 		self.add_collection(decimalCollection)
 	
 

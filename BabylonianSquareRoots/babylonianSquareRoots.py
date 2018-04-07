@@ -22,7 +22,7 @@ class BabylonianSquareRootsProblem(ProblemToFind):
 	def evaluate(self):
 		self.unknown = []
 		guess = self.data['guess']
-		for x in range(3):
+		for x in range(2):
 			guess = self.oracle.babylonian_root(self.data['radicand'],guess)
 			self.unknown.append(guess)
 
@@ -32,4 +32,4 @@ class BabylonianSquareRootsProblem(ProblemToFind):
 		return Math(data=[NoEscape(result)])
 
 	def answer(self):
-		return Math(data=self.formatter.seperate_list_items([NoEscape(sympy.latex(x)) for x in self.unknown],','))
+		return Math(data=self.formatter.separate_list_items([NoEscape(sympy.latex(x)) for x in self.unknown],','))

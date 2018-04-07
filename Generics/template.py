@@ -2,6 +2,8 @@ import os
 from enum import Enum
 
 from pylatex import Document, Section, Command, Enumerate
+from pylatex.base_classes import Environment
+from pylatex.package import Package
 from pylatex.utils import NoEscape
 
 from Generics.problem import Problem
@@ -58,10 +60,14 @@ class Template:
 		"""create sections from the collections"""
 		for collection in self.collections:
 			with self.doc.create(Section(collection.name)):
+				target_env = self.doc
 				#only add the instructions before the questions
 				if collection.instructions != None and problem_part.value != 'answer':
 					self.doc.append(collection.instructions)
-				with self.doc.create(Enumerate()) as enum:
+				if collection.cols > 1:
+					with self.doc.create(Multicols(arguments=str(collection.cols))) as multicol:
+						target_env = multicol
+				with target_env.create(Enumerate()) as enum:
 					for problem in collection.problems:
 						# only give the requested problem_part
 						if problem_part.value == 'question':
@@ -83,3 +89,9 @@ class Template:
 class ProblemPart(Enum):
 	QUESTION = "question"
 	ANSWER = "answer"
+
+class Multicols(Environment):
+	_latex_name = 'multicols'
+	packages= [Package('multicol')]
+	escape=False
+	content_seperator='\n'

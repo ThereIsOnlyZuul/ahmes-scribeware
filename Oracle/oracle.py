@@ -12,6 +12,14 @@ class Oracle(Random):
 	def __init__(self):
 		super().__init__()
 
+	# Random Number Generating Functions
+
+	def randint_nonmultiple(self,min,max,nonmultiple):
+		number = self.randint(min,max)
+		while number % nonmultiple == 0:
+			number = self.randint(min,max)
+		return number
+
 	# Number Theory Functions
 
 	def round(self,decimal,decimal_places):

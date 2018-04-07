@@ -6,7 +6,7 @@ class Formatter:
 	def frac(self, numerator, denominator):
 		return '\\frac{%s}{%s}' % (numerator, denominator)
 
-	def seperate_list_items(self,list_of_values,seperator):
+	def separate_list_items(self,list_of_values,seperator):
 		if len(list_of_values) < 2:
 			return list_of_values
 		result = [list_of_values[0]]
