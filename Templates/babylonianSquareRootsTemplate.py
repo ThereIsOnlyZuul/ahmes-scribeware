@@ -1,4 +1,4 @@
-from BabylonianSquareRoots.babylonianSquareRoots import BabylonianSquareRootsProblem
+from Problems.babylonianSquareRoots import BabylonianSquareRootsProblem
 from Generics.template import Template, ProblemPart
 from Generics.problemCollection import ProblemCollection
 from Oracle.oracle import NumberType

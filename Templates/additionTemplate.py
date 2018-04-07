@@ -1,4 +1,4 @@
-from Addition.additionProblem import IntegerAdditionProblem
+from Problems.additionProblem import IntegerAdditionProblem
 from Generics.template import Template, ProblemPart
 from Generics.problemCollection import ProblemCollection
 
