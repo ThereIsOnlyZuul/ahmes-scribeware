@@ -1,7 +1,5 @@
 from enum import Enum
 
-import sympy as sp
-
 class Function:
 
 	def __init__(self):
@@ -41,7 +39,7 @@ class Sum(Function):
 		self.operands.extend((addend1,addend2))
 
 	def express(self,variable):
-		return sp(addend1.express(variable) + addend2.express(variable))
+		return self.addend1.express(variable) + self.addend2.express(variable)
 
 class Variable(Function):
 
@@ -60,7 +58,7 @@ class Product(Function):
 		self.operands.extend((factor1,factor2))
 
 	def express(self,variable):
-		return sp(factor1.express(variable) * factor2.express(variable))
+		return self.factor1.express(variable) * self.factor2.express(variable)
 
 class Power(Function):
 
@@ -71,7 +69,7 @@ class Power(Function):
 		self.operands.extend((base,exponent))
 
 	def express(self,variable):
-		return sp(base.express(variable) ** exponent.express(variable))
+		return self.base.express(variable) ** self.exponent.express(variable)
 
 class FunctionType(Enum):
 	CONSTANT = 'measure'
