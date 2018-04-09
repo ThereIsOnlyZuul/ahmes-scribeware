@@ -17,8 +17,8 @@ class FormatterTest(unittest.TestCase):
 		self.assertEqual(result,'\\frac{2}{4}')
 		
 	def test_integral(self):
-		result - test_formatter.definite_integral(0,1,'x+1','x')
-		self.asserEqual(result,'\\int_{0}^{1}{x+1}d{x}')
+		result = test_formatter.definite_integral(0,1,'x+1','x')
+		self.assertEqual(result,'\\int_{0}^{1}{x+1}d{x}')
 
 	# Test List formatters
 
