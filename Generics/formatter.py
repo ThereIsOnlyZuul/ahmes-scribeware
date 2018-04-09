@@ -5,6 +5,9 @@ class Formatter:
 
 	def frac(self, numerator, denominator):
 		return '\\frac{%s}{%s}' % (numerator, denominator)
+		
+	def definite_integral(self, a, b, integrand, var):
+		return '\\int_{%s}^{%s}{%s}d{%s}' % (a, b, integrand, var)
 
 	def separate_list_items(self,list_of_values,seperator):
 		if len(list_of_values) < 2:

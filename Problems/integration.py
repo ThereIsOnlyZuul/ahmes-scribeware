@@ -26,3 +26,6 @@ class DefiniteIntegralProblem(ProblemToFind):
 	def set_bounds_of_integration(self,lower_bound,upper_bound):
 		self.a = lower_bound
 		self.b = upper_bound
+		
+	def question(self):
+		sympy.latex(sympy.integral
