@@ -5,22 +5,18 @@ import sympy as sp
 class Function:
 
 	def __init__(self):
-		self.constants = []
 		self.operands = []
 
 	def express(self,variable):
 		pass
 
-	def set_up(self):
-		self.constants = find_constants()
-
 	def find_constants(self):
 		found = []
 		for x in self.operands:
 			if isinstance(x,RandomConstant):
-				found.append(self.constants.append(x))
+				found.append(x)
 			else:
-				found = x.find_constants()
+				found.extend(x.find_constants())
 		return found
 
 class RandomConstant(Function):
