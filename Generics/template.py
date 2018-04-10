@@ -45,6 +45,10 @@ class Template:
 		"""generate a pdf from the sections"""
 		self.doc.generate_pdf(self.output_file, clean_tex=False)
 
+	def _setup(self):
+		"""load packages etc"""
+		self.doc.packages.append(Package('geometry',options='margin=1in'))
+
 	# Behavior methods for Subclasses
 
 	def add_section(self,section_title,section_content):

@@ -18,5 +18,6 @@ class Scribe:
 	def write(self,template,out):
 		self.corpus = self.templates[template]
 		self.corpus.out(out)
+		self.corpus._setup()
 		self.corpus.build()
 		self.corpus.create()
