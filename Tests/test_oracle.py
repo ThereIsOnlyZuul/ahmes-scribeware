@@ -39,6 +39,11 @@ class OracleTest(unittest.TestCase):
 		for x in primes:
 			self.assertFalse(test_oracle.is_square(x))
 
+	def test_randint_series_length(self):
+		for x in range(10):
+			result = test_oracle.randint_series(x,1,10)
+			self.assertEqual(len(result),x)
+
 	## Babylonian Roots
 	def test_babylonian_root(self):
 		self.assertEqual(test_oracle.babylonian_root(3,Fraction(7,4)),Fraction(97,56))

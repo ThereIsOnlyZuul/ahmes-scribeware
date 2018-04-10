@@ -26,7 +26,28 @@ class IntegrationTemplate(Template):
 		template2 = Sum(Product(Variable(),RandomConstant()),RandomConstant())
 		for x in range(4):
 			newProblem = DefiniteIntegralProblem()
-			newProblem.new_data(template2)
+			newProblem.new_data(template2,c_min=1)
+			newProblem.evaluate()
+			firstCollection.add_problem(newProblem)
+
+		for x in range(4):
+			newProblem = DefiniteIntegralProblem()
+			newProblem.random_polynomial_integrand()
+			newProblem.evaluate()
+			firstCollection.add_problem(newProblem)
+
+		for x in range(4):
+			newProblem = DefiniteIntegralProblem()
+			newProblem.random_polynomial_integrand(degree=5)
+			newProblem.random_bounds_of_integration(-10,10)
+			newProblem.evaluate()
+			firstCollection.add_problem(newProblem)
+
+		template3 = Product(Sum(Product(Variable(),RandomConstant()),RandomConstant()),
+			Sum(Product(Variable(),RandomConstant()),RandomConstant()))
+		for x in range(4):
+			newProblem = DefiniteIntegralProblem()
+			newProblem.new_data(template3,c_min=1)
 			newProblem.evaluate()
 			firstCollection.add_problem(newProblem)
 

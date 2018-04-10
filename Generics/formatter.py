@@ -1,7 +1,18 @@
 class Formatter:
 
+	def parenthesize(self,value):
+		return '(%s)' % value
+
 	def sqrt(self,number):
 		return '\\sqrt{%s}' % number
+
+	def rational(self,p,q):
+		if p % q == 0:
+			return p // q
+		if p < q:
+			return '\\frac{%s}{%s}' % (p, q)
+		else:
+			return '{%s}\\frac{%s}{%s}' % (p // q, p % q, q)
 
 	def frac(self, numerator, denominator):
 		return '\\frac{%s}{%s}' % (numerator, denominator)

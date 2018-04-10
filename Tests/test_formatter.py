@@ -20,6 +20,11 @@ class FormatterTest(unittest.TestCase):
 		result = test_formatter.definite_integral(0,1,'x+1','x')
 		self.assertEqual(result,'\\int_{0}^{1}{x+1}d{x}')
 
+	def test_rational(self):
+		result = test_formatter.rational(8,3)
+		expected = '{2}\\frac{2}{3}'
+		self.assertEqual(result,expected)
+
 	# Test List formatters
 
 	def test_seperate_typical_list(self):

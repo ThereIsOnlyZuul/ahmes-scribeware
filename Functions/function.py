@@ -1,11 +1,15 @@
 from enum import Enum
 
+from sympy.core.symbol import Symbol
+
 class Function:
 
 	def __init__(self):
 		self.operands = []
 
 	def express(self,variable):
+		if not isinstance(variable,Symbol):
+			raise TypeError
 		pass
 
 	def find_constants(self):
@@ -27,7 +31,18 @@ class RandomConstant(Function):
 		self.quantity = number
 
 	def express(self,variable):
+		super().express(variable)
 		return self.quantity
+
+class SpecificConstant(Function):
+
+	def __init__(self,value):
+		super().__init__()
+		self.value = value
+
+	def express(self,variable):
+		super().express(variable)
+		return self.value
 
 
 class Sum(Function):
@@ -39,6 +54,7 @@ class Sum(Function):
 		self.operands.extend((addend1,addend2))
 
 	def express(self,variable):
+		super().express(variable)
 		return self.addend1.express(variable) + self.addend2.express(variable)
 
 class Variable(Function):
@@ -47,6 +63,7 @@ class Variable(Function):
 		super().__init__()
 
 	def express(self,variable):
+		super().express(variable)
 		return variable
 
 class Product(Function):
@@ -58,6 +75,7 @@ class Product(Function):
 		self.operands.extend((factor1,factor2))
 
 	def express(self,variable):
+		super().express(variable)
 		return self.factor1.express(variable) * self.factor2.express(variable)
 
 class Power(Function):
@@ -69,6 +87,7 @@ class Power(Function):
 		self.operands.extend((base,exponent))
 
 	def express(self,variable):
+		super().express(variable)
 		return self.base.express(variable) ** self.exponent.express(variable)
 
 class FunctionType(Enum):

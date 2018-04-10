@@ -30,10 +30,17 @@ class DefiniteIntegralProblem(ProblemToFind):
 	def random_bounds_of_integration(self,min,max):
 		self.a = self.oracle.randint(min,max-1)
 		self.b = self.oracle.randint(self.a+1,max)
+
+	def random_polynomial_integrand(self,degree=2,terms=3,c_min=1,c_max=10):
+		self.expression = self.oracle.random_polynomial(degree,terms,c_min,c_max).express(self.variable)
+
 		
 	def question(self):
+		integrand = sympy.latex(self.expression)
+		if len(self.expression.as_ordered_terms()) > 1:
+			integrand = self.formatter.parenthesize(integrand)
 		return Math(data=[NoEscape(self.formatter.definite_integral(self.a,self.b,
-			sympy.latex(self.expression),sympy.latex(self.variable)))])
+			integrand,sympy.latex(self.variable)))])
 
 	def answer(self):
-		return Math(data=[NoEscape(sympy.latex(self.unknown))])
+		return Math(data=NoEscape(self.formatter.rational(self.unknown.p,self.unknown.q)))

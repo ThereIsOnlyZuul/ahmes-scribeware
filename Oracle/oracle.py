@@ -1,6 +1,8 @@
 from enum import Enum
 from random import Random
 
+from Functions.polynomial import Polynomial
+
 from mpmath import floor, ceil, nint
 from sympy import Rational, sqrt
 
@@ -19,6 +21,25 @@ class Oracle(Random):
 		while number % nonmultiple == 0:
 			number = self.randint(min,max)
 		return number
+
+	def randint_series(self,length,min,max,banned=[]):
+		series = []
+		while len(series) < length:
+			new = self.randint(min,max)
+			while new in banned:
+				new = self.randint(min,max)
+			series.append(new)
+		return series
+
+	def random_polynomial(self,degree,number_of_terms,c_min,c_max,banned=[0]):
+		if number_of_terms < 2:
+			raise ValueError
+		the_coefficients = self.randint_series(number_of_terms-1,c_min,c_max,banned)
+		the_coefficients.extend([0 for x in range(degree - number_of_terms + 1)])
+		self.shuffle(the_coefficients)
+		the_coefficients.append(self.randint(c_min,c_max))
+		return Polynomial(the_coefficients)
+
 
 	# Number Theory Functions
 
