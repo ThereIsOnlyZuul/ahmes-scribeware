@@ -51,7 +51,7 @@ class TestPolynomial(unittest.TestCase):
 
 class TestAbsoluteValue(unittest.TestCase):
 
-	def test_express(self):
-		result = AbsoluteValue(Sum(Variable),SpecificConstant(1))).express(x)
+	def test_express_absolute_value(self):
+		result = AbsoluteValue(Sum(Variable(),SpecificConstant(1))).express(x)
 		expected = abs(x+1)
 		self.assertEqual(result,expected)
