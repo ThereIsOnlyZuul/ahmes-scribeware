@@ -1,4 +1,5 @@
 from Functions.function import RandomConstant, Variable, Sum, Product, Power
+from Functions.absoluteValue import AbsoluteValue
 from Problems.integration import DefiniteIntegralProblem
 from Generics.template import Template, ProblemPart
 from Generics.problemCollection import ProblemCollection

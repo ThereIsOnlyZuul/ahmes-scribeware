@@ -13,15 +13,23 @@ class DefiniteIntegralProblem(ProblemToFind):
 		self.a = 0 # the lower bound of integration
 		self.b = 1 # the upper bound of integration
 		self.expression = None
+		self.template = None
 		self.variable = sympy.symbols('x')
 
 	def new_data(self,integrand_template,c_min=0,c_max=10):
+		self.template = integrand_template
 		for c in integrand_template.find_constants():
 			c.value(self.oracle.randint(c_min,c_max))
 		self.expression = integrand_template.express(self.variable)
 
 	def evaluate(self):
 		self.unknown = sympy.integrate(self.expression,(self.variable,self.a,self.b))
+		if isinstance(self.unknown,sympy.integrals.Integral):
+			with sympy.expand(self.expression.args[0]) as new_integrand:
+				self.unknown = sympy.integrate(abs(new_integrand,(self.variable,self.a,self.b)))
+
+
+
 
 	def set_bounds_of_integration(self,lower_bound,upper_bound):
 		self.a = lower_bound
@@ -33,7 +41,6 @@ class DefiniteIntegralProblem(ProblemToFind):
 
 	def random_polynomial_integrand(self,degree=2,terms=3,c_min=1,c_max=10):
 		self.expression = self.oracle.random_polynomial(degree,terms,c_min,c_max).express(self.variable)
-
 		
 	def question(self):
 		integrand = sympy.latex(self.expression)
@@ -43,4 +50,7 @@ class DefiniteIntegralProblem(ProblemToFind):
 			integrand,sympy.latex(self.variable)))])
 
 	def answer(self):
-		return Math(data=NoEscape(self.formatter.rational(self.unknown.p,self.unknown.q)))
+		if isinstance(self.unknown,sympy.numbers.Rational):
+			return Math(data=NoEscape(self.formatter.rational(self.unknown.p,self.unknown.q)))
+		elif isinstance(self.unknown,sympy.integrals.Integral):
+			return Math(data=NoEscape(sympy.latex(self.unknown)))
