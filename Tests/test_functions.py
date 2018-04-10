@@ -4,6 +4,7 @@ import sympy
 
 from Functions.function import *
 from Functions.polynomial import Polynomial
+from Functions.absoluteValue import AbsoluteValue
 
 x, y, z, alpha, beta = sympy.symbols('x y z \\alpha \\beta')
 
@@ -47,3 +48,10 @@ class TestPolynomial(unittest.TestCase):
 		test_poly = Polynomial(series).express(x)
 		expected = x**2 + 1
 		self.assertEqual(test_poly,expected)
+
+class TestAbsoluteValue(unittest.TestCase):
+
+	def test_express(self):
+		result = AbsoluteValue(Sum(Variable),SpecificConstant(1))).express(x)
+		expected = abs(x+1)
+		self.assertEqual(result,expected)
