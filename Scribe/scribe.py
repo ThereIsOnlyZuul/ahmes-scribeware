@@ -1,6 +1,7 @@
 from Templates.additionTemplate import AdditionTemplate
 from Templates.babylonianSquareRootsTemplate import BabylonianSquareRootsTemplate
 from Templates.egyptianFractionsTemplate import EgyptianFractionsTemplate
+from Templates.fractionAdditionTemplate import FractionAdditionTemplate
 from Templates.integrationTemplate import IntegrationTemplate
 from Generics.template import ProblemPart
 
@@ -10,6 +11,7 @@ class Scribe:
 	templates = {'addition1': AdditionTemplate(),
 		'babylonian1': BabylonianSquareRootsTemplate(),
 		'egyptian1': EgyptianFractionsTemplate(),
+		'fractions1': FractionAdditionTemplate(),
 		'integration1': IntegrationTemplate()}
 
 	def __init__(self, corpus=None):
