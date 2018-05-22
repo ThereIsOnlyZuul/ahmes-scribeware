@@ -27,9 +27,9 @@ class Formatter:
 			Operand.SUBTRACT:
                 ' - ',
             Operand.MULTIPLY:
-				' \times ',
+				' \\times ',
 			Operand.DIVIDE:
-				' \div ',
+				' \\div ',
 			Operand.POWER:
 				'^'
         }[operand]
