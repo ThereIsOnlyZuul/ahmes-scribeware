@@ -1,3 +1,5 @@
+from Oracle.oracle import Operand
+
 class Formatter:
 
 	def parenthesize(self,value):
@@ -17,6 +19,22 @@ class Formatter:
 	def frac(self, numerator, denominator):
 		return '\\frac{%s}{%s}' % (numerator, denominator)
 		
+
+	def latex_string_operand(self,operand):
+		return {
+			Operand.ADD:
+				' + ',
+			Operand.SUBTRACT:
+                ' - ',
+            Operand.MULTIPLY:
+				' \times ',
+			Operand.DIVIDE:
+				' \div ',
+			Operand.POWER:
+				'^'
+        }[operand]
+
+
 	def definite_integral(self, a, b, integrand, var):
 		return '\\int_{%s}^{%s}{%s}d{%s}' % (a, b, integrand, var)
 

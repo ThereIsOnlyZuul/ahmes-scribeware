@@ -39,3 +39,37 @@ class FractionAdditionProblem(ProblemToFind):
 
 	def answer(self):
 		return Math(data=NoEscape(self.formatter.rational(self.unknown.p,self.unknown.q)))
+
+class FractionArithmeticProblem(ProblemToFind):
+
+	def __init__(self):
+		super().__init__()
+		self.condition = "Rational numbers and arithmetic operations"
+
+	def new_data(self,fractions=2,dmin=2,dmax=10,nmin=1,nmax=10):
+		self.data = []
+		self.data.append(self.oracle.randfrac_complexity(dmin,dmax,nmin,nmax))
+		for x in range(1,fractions):
+			self.data.append(self.oracle.random_operator(top=3))
+			self.data.append(self.oracle.randfrac_complexity(dmin,dmax,nmin,nmax))
+
+	def evaluate(self):
+		expr = ''
+		for x in range(len(self.data)):
+			if x % 2 == 0:
+				expr += ' '+str(self.data[x].p)+'/'+str(self.data[x].q)+' '
+			else:
+				expr += self.oracle.sympy_string_operand(self.data[x])
+		self.unknown = sympy.S(expr)
+
+	def question(self):
+		expr = ''
+		for x in range(len(self.data)):
+			if x % 2 == 0:
+				expr += self.formatter.rational(self.data[x].p,self.data[x].q)
+			else:
+				expr += self.formatter.latex_string_operand(self.data[x])
+		return Math(data=NoEscape(expr))
+
+	def answer(self):
+		return Math(data=NoEscape(self.formatter.rational(self.unknown.p,self.unknown.q)))

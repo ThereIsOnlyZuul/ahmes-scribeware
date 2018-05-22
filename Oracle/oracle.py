@@ -50,6 +50,24 @@ class Oracle(Random):
         the_coefficients.append(self.randint(c_min,c_max))
         return Polynomial(the_coefficients)
 
+    # Operand Management
+
+    def random_operator(self,bot=0,top=4):
+        return list(Operand)[self.randint(bot,top)]
+
+    def sympy_string_operand(self,operand):
+        return {
+            Operand.ADD:
+                '+',
+            Operand.SUBTRACT:
+                '-',
+            Operand.MULTIPLY:
+                '*',
+            Operand.DIVIDE:
+                '/',
+            Operand.POWER:
+                '**'
+        }[operand]
 
     # Number Theory Functions
 
@@ -94,3 +112,10 @@ class NumberType(Enum):
     RATIONAL = 'Q'
     INTEGER = 'Z'
     REAL = 'R'
+
+class Operand(Enum):
+    ADD  = 0
+    SUBTRACT = 1
+    MULTIPLY = 2
+    DIVIDE = 3
+    POWER = 4

@@ -22,3 +22,13 @@ class FractionAdditionTemplate(Template):
 			easyCollection.add_problem(newProblem)
 		easyCollection.columns(2)
 		self.add_collection(easyCollection)
+
+		longerCollection = ProblemCollection('Longer Series')
+		longerCollection.set_instructions('Find the following sums')
+		for x in range(10):
+			newProblem = FractionAdditionProblem()
+			newProblem.new_data(quantity=5)
+			newProblem.evaluate()
+			longerCollection.add_problem(newProblem)
+		longerCollection.columns(2)
+		self.add_collection(longerCollection)
