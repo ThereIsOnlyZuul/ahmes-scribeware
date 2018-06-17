@@ -10,7 +10,7 @@ test_oracle = Oracle()
 class OracleTest(unittest.TestCase):
 
 
-    # Number Theory
+#### Number Theory -----------------------------------------------------------!
 
     ## Rounding
 
@@ -65,3 +65,49 @@ class OracleTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             test_oracle.randint_nonmultiple(2,3,1)
 
+#### Statistics --------------------------------------------------------------!
+    
+    data_001 = [0,0,0,0,0]
+    data_002 = [1,1,1,1,1]
+    data_003 = [0,1,2,3,4]
+    data_004 = [2,3,4,5,6]
+    data_005 = [2,2,2,2,7]
+    data_006 = [2,2,4,6,8,8]
+    data_007 = [0,1,4,9,16]
+    data_008 = [0,1,1,2,3,5]
+
+    def test_arithmetic_mean_of_known_data(self):
+        result = test_oracle.arithmetic_mean(self.data_001)
+        self.assertEqual(result,0)
+        result = test_oracle.arithmetic_mean(self.data_002)
+        self.assertEqual(result,1)
+        result = test_oracle.arithmetic_mean(self.data_003)
+        self.assertEqual(result,2)
+        result = test_oracle.arithmetic_mean(self.data_004)
+        self.assertEqual(result,4)
+        result = test_oracle.arithmetic_mean(self.data_005)
+        self.assertEqual(result,3)
+        result = test_oracle.arithmetic_mean(self.data_006)
+        self.assertEqual(result,5)
+        result = test_oracle.arithmetic_mean(self.data_007)
+        self.assertEqual(result,6)
+        result = test_oracle.arithmetic_mean(self.data_008)
+        self.assertEqual(result,2)
+
+    def test_median_of_known__data(self):
+        result = test_oracle.median(self.data_001)
+        self.assertEqual(result,0)
+        result = test_oracle.median(self.data_002)
+        self.assertEqual(result,1)
+        result = test_oracle.median(self.data_003)
+        self.assertEqual(result,2)
+        result = test_oracle.median(self.data_004)
+        self.assertEqual(result,4)
+        result = test_oracle.median(self.data_005)
+        self.assertEqual(result,2)
+        result = test_oracle.median(self.data_006)
+        self.assertEqual(result,5)
+        result = test_oracle.median(self.data_007)
+        self.assertEqual(result,4)
+        result = test_oracle.median(self.data_008)
+        self.assertEqual(result,1.5)
