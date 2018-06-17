@@ -14,7 +14,7 @@ class Oracle(Random):
     def __init__(self):
         super().__init__()
 
-    # Random Number Generating Functions
+#### Random Number Generating Functions --------------------------------------!
 
     def randint_nonmultiple(self,min,max,nonmultiple):
         if nonmultiple == 1:
@@ -32,12 +32,14 @@ class Oracle(Random):
         x = S(str(numerator)+'/'+str(denominator))
         return x
 
-    def randint_series(self,length,min,max,banned=[]):
+    def randint_series(self,length,min,max,banned=[],unique=False):
         series = []
         while len(series) < length:
             new = self.randint(min,max)
             while new in banned:
                 new = self.randint(min,max)
+            if unique:
+                banned.append(new)
             series.append(new)
         return series
 
@@ -50,7 +52,7 @@ class Oracle(Random):
         the_coefficients.append(self.randint(c_min,c_max))
         return Polynomial(the_coefficients)
 
-    # Operand Management
+#### Operand Management ------------------------------------------------------!
 
     def random_operator(self,bot=0,top=4):
         return list(Operand)[self.randint(bot,top)]
@@ -69,7 +71,7 @@ class Oracle(Random):
                 '**'
         }[operand]
 
-    # Number Theory Functions
+#### Number Theory Functions -------------------------------------------------!
 
     def round(self,decimal,decimal_places):
         enlarged = decimal * 10 ** (decimal_places)
@@ -107,6 +109,24 @@ class Oracle(Random):
                 return False
             seen.add(x)
         return True
+
+#### Statistics Functions ----------------------------------------------------!
+
+    def arithmetic_mean(self,data):
+        return sum(data)/len(data)
+
+    def median(self,data):
+        if len(data) % 2 == 1: # an odd number of items
+            # We can just take the item in the middle spot
+            return sorted(data)[int((len(data) + 1)/2 - 1)]
+        else: # an even number of items
+            # We should return the average of the two middle numbers
+            middle = data[int(len(data)/2-1):int(len(data)/2+1)]
+            return self.arithmetic_mean(middle)
+
+    def mode(self,data):
+        pass
+
 
 class NumberType(Enum):
     RATIONAL = 'Q'
