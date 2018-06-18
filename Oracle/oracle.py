@@ -125,8 +125,26 @@ class Oracle(Random):
             return self.arithmetic_mean(middle)
 
     def mode(self,data):
-        pass
+        element_census = {} # a dictionary to hold our data
+        max_pop = 1         # a counter to keep track of the maximum population
+        for element in data:
+            # sample each element and get its population size
+            element_census[element] = data.count(element)
+        for value, population in element_census.items():
+            # cycle through and find the maximum population
+            if population > max_pop:
+                max_pop = population
+        modes = [] # an array to hold our potential modes
+        if max_pop > 1:
+            for value, population in element_census.items():
+                # if the population is equal to the max, then it is a mode
+                if population == max_pop:
+                    modes.append(value)
+            return modes #Done looping, ready to return the modes
+        else : # if the maximum population was one, there is no mode
+            return None
 
+##### Helper Enumerations ----------------------------------------------------!
 
 class NumberType(Enum):
     RATIONAL = 'Q'
