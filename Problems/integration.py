@@ -24,10 +24,6 @@ class DefiniteIntegralProblem(ProblemToFind):
 
 	def evaluate(self):
 		self.unknown = sympy.integrate(self.expression,(self.variable,self.a,self.b))
-		if isinstance(self.unknown,sympy.integrals.Integral):
-			with sympy.expand(self.expression.args[0]) as new_integrand:
-				self.unknown = sympy.integrate(abs(new_integrand,(self.variable,self.a,self.b)))
-
 
 
 
