@@ -75,6 +75,7 @@ class OracleTest(unittest.TestCase):
     data_006 = [2,2,4,6,8,8]
     data_007 = [0,1,4,9,16]
     data_008 = [0,1,1,2,3,5]
+    data_009 = [1,1,2,2,3,9]
 
     def test_arithmetic_mean_of_known_data(self):
         result = test_oracle.arithmetic_mean(self.data_001)
@@ -93,8 +94,11 @@ class OracleTest(unittest.TestCase):
         self.assertEqual(result,6)
         result = test_oracle.arithmetic_mean(self.data_008)
         self.assertEqual(result,2)
+        result = test_oracle.arithmetic_mean(self.data_009)
+        self.assertEqual(result,3)
 
-    def test_median_of_known__data(self):
+
+    def test_median_of_known_data(self):
         result = test_oracle.median(self.data_001)
         self.assertEqual(result,0)
         result = test_oracle.median(self.data_002)
@@ -111,3 +115,19 @@ class OracleTest(unittest.TestCase):
         self.assertEqual(result,4)
         result = test_oracle.median(self.data_008)
         self.assertEqual(result,1.5)
+        result = test_oracle.median(self.data_009)
+        self.assertEqual(result,2)
+
+    def test_mode_of_known_data(self):
+        result = test_oracle.mode(self.data_001)
+        self.assertEqual(result,[0])
+        result = test_oracle.mode(self.data_002)
+        self.assertEqual(result,[1])
+        result = test_oracle.mode(self.data_003)
+        self.assertEqual(result,None)
+        result = test_oracle.mode(self.data_005)
+        self.assertEqual(result,[2])
+        result = test_oracle.mode(self.data_008)
+        self.assertEqual(result,[1])
+        result = test_oracle.mode(self.data_009)
+        self.assertEqual(result,[1,2])
