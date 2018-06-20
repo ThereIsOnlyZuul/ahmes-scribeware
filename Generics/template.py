@@ -27,7 +27,7 @@ class Template:
 	def __init__(self):
 		self.collections = []
 		self.output_file = "a"
-		self.doc = Document('a')
+		self.doc = Document('a',documentclass='ahmesworksheet')
 
 	# Methods called by the Scribe
 	def out(self,output_file_location):
@@ -47,7 +47,8 @@ class Template:
 
 	def _setup(self):
 		"""load packages etc"""
-		self.doc.packages.append(Package('geometry',options='margin=1in'))
+		#self.doc.packages.append(Package('geometry',options='margin=1in'))
+		pass
 
 	# Behavior methods for Subclasses
 
