@@ -27,7 +27,7 @@ class simpleMeanMedianTemplate(Template):
 
 		# A small number mean median collection
 
-		smallCollection = ProblemCollection('Means and Medians')
+		smallCollection = ProblemCollection('Larger Means and Medians')
 		smallCollection.set_instructions('Find the mean and median for each of the following sets.')
 		for x in range(10):
 			new_problem = simpleMeanMedianProblem()
