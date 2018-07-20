@@ -43,6 +43,8 @@ program like so:
 You can also use the live-scribe for an interactive console experience. This
 is new, and you can expect it to be buggy...
 
+You can activate the console interactive live-scribe by not supplying a template name or location.
+
 
 ## Contributing
 
