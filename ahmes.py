@@ -20,10 +20,15 @@
 import sys
 
 from Scribe.scribe import Scribe
+from Scribe.live_scribe import LiveScribe
 
 def main():
-	ahmes = Scribe()
-	ahmes.write(sys.argv[1],sys.argv[2])
+	if len(sys.argv) < 2:
+		ahmes = LiveScribe()
+		ahmes.main_loop()
+	elif len(sys.argv) == 3:
+		ahmes = Scribe()
+		ahmes.write(sys.argv[1],sys.argv[2])
 
 
 if __name__ == '__main__':
