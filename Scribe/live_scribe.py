@@ -10,7 +10,7 @@ class LiveScribe(Scribe) :
 
 	loop_prompt = "Would you like to make another worksheet? "
 
-	def callback(self,prompt,options):
+	def prompt_with_options(self,prompt,options):
 		option_prompt = "Please select one of the following options."
 		stringified_options = [str(x) for x in options]
 		if prompt != None:
@@ -27,7 +27,7 @@ class LiveScribe(Scribe) :
 		print(self.greeting)
 		looping = True
 		while looping:
-			template = self.callback(None,self.templates.keys())
+			template = self.prompt_with_options(None,self.templates.keys())
 			out = input(self.output_prompt)
 			self.write(template,out)
-			looping = self.callback(self.loop_prompt,['Yes','No']) == 'Yes'
+			looping = self.prompt_with_options(self.loop_prompt,['Yes','No']) == 'Yes'
