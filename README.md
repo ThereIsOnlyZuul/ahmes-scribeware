@@ -10,6 +10,8 @@ the first known written work concerning mathematical procedures.
 
 You'll need LaTeX and Python (obviously), and a few other python packages.
 
+This package is written in Python 3, not 2.7.
+
 [Sympy](www.sympy.org) is used for symbolic calculations and LaTeX formatting.
 
 [PyLaTeX](https://jeltef.github.io/PyLaTeX/current/) is used for preparing 
@@ -38,6 +40,9 @@ program like so:
 	>> ahmes(.py) [template] [location]
 ```
 
+You can also use the live-scribe for an interactive console experience. This
+is new, and you can expect it to be buggy...
+
 
 ## Contributing
 
@@ -49,6 +54,5 @@ have more exprerience and want to contribute, feel free to contat
 
 ## ToDo
 
-Test the code (In Progress).
-Write user interface.
-Make more templates(In Progress). 
+Test the code.
+Make more templates.
