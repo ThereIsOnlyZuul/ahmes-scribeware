@@ -131,3 +131,10 @@ class OracleTest(unittest.TestCase):
         self.assertEqual(result,[1])
         result = test_oracle.mode(self.data_009)
         self.assertEqual(result,[1,2])
+
+    #### Random Generation
+
+    def test_produces_correct_number_of_letters(self):
+        for x in range(26):
+            result = test_oracle.random_capital_letters(x)
+            self.assertEqual(len(result),x)

@@ -1,5 +1,6 @@
 from enum import Enum
-from random import Random
+from random import Random, choice
+import string
 
 from Functions.polynomial import Polynomial
 
@@ -51,6 +52,18 @@ class Oracle(Random):
         self.shuffle(the_coefficients)
         the_coefficients.append(self.randint(c_min,c_max))
         return Polynomial(the_coefficients)
+
+    def random_capital_letters(self,number_of_letters):
+        pool = string.ascii_uppercase
+        letters = []
+        if number_of_letters > 25:
+            return pool
+        else:
+            while len(letters) < number_of_letters:
+                newLetter = choice(pool)
+                if not newLetter in letters:
+                    letters.append(newLetter)
+        return letters
 
 #### Operand Management ------------------------------------------------------!
 
