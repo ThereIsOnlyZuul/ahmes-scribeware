@@ -16,8 +16,12 @@ class EgyptianFractionType(Enum):
 
 class EgyptianFractionsProblem(ProblemToFind):
 
+	# Initialization
+
 	def __init__(self):
 		super().__init__()
+
+	# Behavior
 
 	def new_data(self,fraction_type=EgyptianFractionType.PROPER,max_component=50):
 		numerator = self.oracle.randint(2,max_component-1)
@@ -30,7 +34,6 @@ class EgyptianFractionsProblem(ProblemToFind):
 			# For the next line, we must make sure that the denominator is not even, or the fraction will reduce
 			denominator = self.oracle.randint_nonmultiple(numerator,max_component,2)
 		self.data = sympy.Rational(numerator,denominator)
-
 
 	def evaluate(self):
 		self.unknown = [sympy.Rational(1,x) for x in egypt(self.data)]
