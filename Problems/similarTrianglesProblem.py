@@ -34,14 +34,20 @@ class SimilarTrianglesProblem(ProblemToFind):
 		p = self.oracle.randint(min_k,max_k)
 		q = self.oracle.randint(p*min_k,p*max_k)
 		k = sympy.Rational(p,q)
+		# Make the second triangle
+		#  It will need to have similar sides
+		#  The angles have a congruent angle with vertex v1
 		triangle2 = Triangle(triangle1.s1*k,triangle1.s2*k,triangle1.s3*k,points[0],points[3],points[4])
 		# Type 1: The triangles overlap at point[0]
 		#         All of the data is given for the small triangle.
 		#         On the large triangle the side opposite the shared angle is given.
 		if question_type == 1:
-			self.data = {self.triangle.v1+self.triangle.v2 : self.triangle.s3,
-						 self.triangle.v2+self.triangle.v3 : self.triangle.s1,
-						 self.traingle.v3+self.triangle.v1 : self.triangle.s2}
+			self.data = {triangle1.v1+triangle1.v2 : triangle1.s3,
+						 triangle1.v2+triangle1.v3 : triangle1.s1,
+						 traingle1.v3+triangle1.v1 : triangle1.s2,
+						 triangle2.v2+triangle2.v3 : triangle2.s1}
+			self.unknown = {triangle2.v1+triangle2.v2 : triangle2.s3,
+							triangle2.v1+triangle2.v3 : triangle2.s2}
 
 
 class Triangle:
