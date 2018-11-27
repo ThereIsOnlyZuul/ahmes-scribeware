@@ -17,7 +17,12 @@
 \usepackage{pgfplots}
 
 % Fonts
-\usepackage{pxfonts}
+\usepackage{fontspec}
+\setromanfont[Ligatures=TeX]{TeX Gyre Schola}
+\usepackage{unicode-math}
+
+\setmathfont[math-style=ISO,bold-style=ISO]{TeX Gyre Schola Math}
+
 
 % Redefine maketitle
 

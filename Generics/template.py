@@ -43,7 +43,7 @@ class Template:
 
 	def create(self):
 		"""generate a pdf from the sections"""
-		self.doc.generate_pdf(self.output_file, clean_tex=False)
+		self.doc.generate_pdf(self.output_file, clean_tex=False,compiler="xelatex")
 
 	def _setup(self):
 		"""load packages etc"""
