@@ -28,11 +28,15 @@
 \tline{Date}{\mdblank}\hfil
 \tline{Class}{\mdblank}
 \newline
+
 \worksheettitle
 }
 
 \newcommand\worksheettitle{
-	{{\hspace{1in}} {\Large\bfseries{\@title}}}
+
+	{\vspace{1em}}
+
+	{{\hspace{0.5in}} {\Large\bfseries{\@title}}}
 }
 
 % Ahmes Worksheet Commands
